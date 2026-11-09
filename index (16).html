@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luisa Odonto — Dental Management</title>
+<style>
+:root{--green:#536b59;--green2:#718875;--ink:#26332b;--muted:#788078;--bg:#f5f6f2;--line:#e6e9e2;--white:#fff;--gold:#b99a62;--soft:#edf1e9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.layout{display:flex;min-height:100vh}.sidebar{width:250px;background:#fff;border-right:1px solid var(--line);padding:25px 17px;position:fixed;inset:0 auto 0 0;z-index:5;display:flex;flex-direction:column}
+.brand{padding:4px 12px 28px}.brand strong{font-family:Georgia,serif;font-size:22px;letter-spacing:.5px;color:var(--green)}.brand small{display:block;color:#9a9f97;letter-spacing:2px;font-size:9px;margin-top:5px}
+.navlabel{font-size:10px;color:#a0a69e;letter-spacing:1.5px;padding:10px 12px}.nav button{width:100%;border:0;background:transparent;text-align:left;padding:11px 12px;border-radius:9px;color:#68736a;margin:2px 0;display:flex;gap:12px;align-items:center}.nav button:hover,.nav button.active{background:var(--soft);color:var(--green);font-weight:650}.nav .ico{width:18px;text-align:center;font-size:16px}.sidebar-foot{margin-top:auto;background:#f6f7f3;padding:14px;border-radius:12px}.sidebar-foot b{display:block;font-size:12px}.sidebar-foot span{color:var(--muted);font-size:11px}
+.main{margin-left:250px;width:calc(100% - 250px);padding:28px 34px 50px;max-width:1600px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:27px}.eyebrow{font-size:11px;letter-spacing:1.5px;color:var(--green);font-weight:700;text-transform:uppercase}.top h1{font:30px Georgia,serif;margin:7px 0 0}.profile{display:flex;gap:11px;align-items:center}.avatar{width:39px;height:39px;border-radius:50%;background:#e5ebe1;color:var(--green);display:grid;place-items:center;font-weight:700}.profile small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.page{display:none}.page.active{display:block}.welcome{background:linear-gradient(110deg,#e9eee5,#f4f2e9);border:1px solid #e2e8de;border-radius:17px;padding:25px 28px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:20px}.welcome h2{font:25px Georgia,serif;margin:8px 0}.welcome p{margin:0;color:#69756a}.welcome .quote{font:italic 13px Georgia,serif;color:#637464;max-width:240px;text-align:right;line-height:1.6}
+.grid{display:grid;gap:15px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}.stathead{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.statnum{font:28px Georgia,serif;margin:14px 0 5px}.statnote{font-size:11px;color:#8b958b}.card h3{font:18px Georgia,serif;margin:0 0 15px}.two{grid-template-columns:1.25fr .75fr}.three{grid-template-columns:repeat(3,1fr)}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:23px 0 14px}.sectionhead h2{font:22px Georgia,serif;margin:0}.muted{color:var(--muted)}.btn{border:0;background:var(--green);color:white;padding:10px 15px;border-radius:9px;font-weight:600}.btn:hover{background:#405746}.btn.light{background:#eef2eb;color:var(--green)}.btn.line{background:white;border:1px solid var(--line);color:var(--green)}.btn.danger{background:#f9eeee;color:#a34c4c}.actions{display:flex;gap:8px;flex-wrap:wrap}.barrow{display:grid;grid-template-columns:110px 1fr 38px;gap:10px;align-items:center;margin:15px 0;font-size:12px}.bar{height:8px;background:#eef1eb;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green2);border-radius:20px}.appointment{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.appointment:last-child{border:0}.time{font-weight:700;color:var(--green);min-width:52px}.pill{font-size:10px;padding:5px 8px;border-radius:20px;background:#edf3ec;color:#58745d;white-space:nowrap}.pill.gold{background:#f6f0e4;color:#98783f}.pill.gray{background:#f0f1ef;color:#707970}
+.toolbar{display:flex;justify-content:space-between;gap:12px;margin-bottom:15px;flex-wrap:wrap}.search{padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;min-width:230px;outline-color:var(--green)}table{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden}th,td{text-align:left;padding:13px 14px;border-bottom:1px solid #edf0eb;font-size:12px}th{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#879087;background:#fafbf9}tr:last-child td{border:0}.empty{text-align:center;padding:30px;color:var(--muted)}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:#6f796f;font-weight:650}.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:8px;padding:10px;background:white;outline-color:var(--green);width:100%}.field textarea{min-height:75px;resize:vertical}.modal{display:none;position:fixed;inset:0;background:#1e292477;z-index:10;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modalbox{background:#fff;border-radius:16px;padding:23px;width:min(560px,100%);max-height:90vh;overflow:auto;box-shadow:0 20px 70px #18251c30}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.modalhead h3{font:22px Georgia,serif;margin:0}.x{border:0;background:#f1f3ef;border-radius:50%;width:30px;height:30px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{background:white;border:1px solid var(--line);border-radius:9px;min-height:85px;padding:8px;font-size:11px}.day b{display:block;margin-bottom:8px}.day.today{border-color:var(--green);background:#f0f4ed}.day span{display:block;background:#e9efe7;color:#536b59;padding:4px;border-radius:5px;margin:3px 0;font-size:10px}
+.notice{background:#f8f5ec;border:1px solid #eee6d5;padding:13px;border-radius:10px;color:#776844;font-size:12px;line-height:1.5}.footer{text-align:center;color:#a1a79f;font-size:10px;margin-top:28px}
+@media(max-width:900px){.sidebar{width:205px}.main{margin-left:205px;width:calc(100% - 205px);padding:22px}.stats{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}
+@media(max-width:650px){.sidebar{position:fixed;inset:auto 0 0;width:100%;height:65px;padding:5px 8px;border-top:1px solid var(--line);border-right:0}.brand,.navlabel,.sidebar-foot{display:none}.nav{display:flex;justify-content:space-around}.nav button{width:auto;display:flex;flex-direction:column;gap:2px;padding:7px 8px;font-size:9px;margin:0}.nav .ico{font-size:17px}.main{margin:0;width:100%;padding:20px 14px 90px}.top h1{font-size:25px}.profile div:last-child{display:none}.welcome{padding:20px;display:block}.welcome .quote{display:none}.stats{gap:9px}.card{padding:14px}.statnum{font-size:24px}.three{grid-template-columns:1fr}.calendar{gap:3px}.day{min-height:66px;padding:4px;font-size:9px}.day span{font-size:8px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}table{display:block;overflow-x:auto}}
+</style></head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+ <div class="brand"><strong>LUISA ODONTO</strong><small>DENTAL MANAGEMENT</small></div>
+ <div class="navlabel">MENU PRINCIPAL</div>
+ <nav class="nav">
+  <button class="active" data-page="dashboard"><span class="ico">⌂</span>Visão geral</button>
+  <button data-page="patients"><span class="ico">♙</span>Pacientes</button>
+  <button data-page="agenda"><span class="ico">▦</span>Agenda</button>
+  <button data-page="treatments"><span class="ico">✧</span>Tratamentos</button>
+  <button data-page="finance"><span class="ico">＄</span>Financeiro</button>
+  <button data-page="stock"><span class="ico">▤</span>Estoque</button>
+ </nav>
+ <div class="sidebar-foot"><b>Seu futuro começa aqui.</b><span>Organização para cuidar melhor.</span></div>
+</aside>
+<main class="main">
+ <header class="top"><div><div class="eyebrow">PAINEL DE GESTÃO</div><h1 id="pageTitle">Visão geral</h1></div><div class="profile"><div class="avatar">LG</div><div><b>Luisa Gonçalves</b><small>Área profissional · CEUMA 2026</small></div></div></header>
+
+<section class="page active" id="dashboard">
+ <div class="welcome"><div><div class="eyebrow">SEJA BEM-VINDA AO SEU ESPAÇO</div><h2>Olá, Luisa. Que bom ter você aqui!</h2><p>Um passo de cada vez. Uma carreira inteira pela frente.</p></div><div class="quote">“Grandes jornadas começam com cuidado nos pequenos detalhes.”</div></div>
+ <div class="grid stats">
+  <div class="card"><div class="stathead">Pacientes cadastrados <span>♙</span></div><div class="statnum" id="statPatients">0</div><div class="statnote">Na sua base de relacionamento</div></div>
+  <div class="card"><div class="stathead">Consultas agendadas <span>▦</span></div><div class="statnum" id="statAppointments">0</div><div class="statnote">Registros na agenda</div></div>
+  <div class="card"><div class="stathead">Planos de tratamento <span>✧</span></div><div class="statnum" id="statTreatments">0</div><div class="statnote">Em acompanhamento</div></div>
+  <div class="card"><div class="stathead">Receitas registradas <span>＄</span></div><div class="statnum" id="statRevenue">R$ 0</div><div class="statnote">Valores lançados no sistema</div></div>
+ </div>
+ <div class="grid two">
+  <div class="card"><h3>Atividade da agenda</h3><div id="upcoming"></div></div>
+  <div class="card"><h3>Comece por aqui</h3><p class="muted" style="line-height:1.6">Organize sua rotina profissional em um só lugar. Cadastre pacientes, registre consultas e acompanhe seus planos de tratamento.</p><div class="actions"><button class="btn" onclick="openPatient()">＋ Novo paciente</button><button class="btn light" onclick="openAppointment()">＋ Agendar consulta</button></div><div class="notice" style="margin-top:17px">Esta é uma versão inicial demonstrativa. Antes de utilizar com pacientes reais, configure hospedagem segura, autenticação, banco de dados, backups e adequação à LGPD.</div></div>
+ </div>
+</section>
+
+<section class="page" id="patients">
+ <div class="sectionhead"><h2>Relacionamento com pacientes</h2><button class="btn" onclick="openPatient()">＋ Cadastrar paciente</button></div>
+ <div class="toolbar"><input class="search" id="patientSearch" placeholder="Buscar por nome, telefone ou e-mail..." oninput="renderPatients()"><span class="muted" id="patientCount"></span></div>
+ <div class="card" style="padding:0"><table><thead><tr><th>Paciente</th><th>Contato</th><th>Origem</th><th>Status CRM</th><th>Ações</th></tr></thead><tbody id="patientRows"></tbody></table></div>
+</section>
+
+<section class="page" id="agenda">
+ <div class="sectionhead"><h2>Agenda de atendimentos</h2><button class="btn" onclick="openAppointment()">＋ Novo agendamento</button></div>
+ <div class="toolbar"><input type="date" class="search" id="agendaDate" onchange="renderAgenda()"><span class="muted">Agenda organizada por data</span></div>
+ <div class="card"><div id="agendaList"></div></div>
+</section>
+
+<section class="page" id="treatments">
+ <div class="sectionhead"><h2>Planos de tratamento</h2><button class="btn" onclick="openTreatment()">＋ Novo plano</button></div>
+ <div class="card" style="padding:0"><table><thead><tr><th>Paciente</th><th>Procedimento / plano</th><th>Valor</th><th>Status</th><th>Ações</th></tr></thead><tbody id="treatmentRows"></tbody></table></div>
+</section>
+
+<section class="page" id="finance">
+ <div class="sectionhead"><h2>Controle financeiro</h2><button class="btn" onclick="openFinance()">＋ Lançar receita</button></div>
+ <div class="grid three" style="margin-bottom:16px">
+  <div class="card"><div class="stathead">Total de receitas</div><div class="statnum" id="totalRevenue">R$ 0</div></div>
+  <div class="card"><div class="stathead">Total de despesas</div><div class="statnum" id="totalExpenses">R$ 0</div></div>
+  <div class="card"><div class="stathead">Saldo registrado</div><div class="statnum" id="balance">R$ 0</div></div>
+ </div>
+ <div class="card" style="padding:0"><table><thead><tr><th>Descrição</th><th>Tipo</th><th>Data</th><th>Valor</th><th>Ações</th></tr></thead><tbody id="financeRows"></tbody></table></div>
+</section>
+
+<section class="page" id="stock">
+ <div class="sectionhead"><h2>Materiais e estoque</h2><button class="btn" onclick="openStock()">＋ Adicionar material</button></div>
+ <div class="notice" style="margin-bottom:15px">Controle básico de materiais. Registre quantidades e acompanhe os itens disponíveis.</div>
+ <div class="card" style="padding:0"><table><thead><tr><th>Material</th><th>Categoria</th><th>Quantidade</th><th>Estoque mínimo</th><th>Ações</th></tr></thead><tbody id="stockRows"></tbody></table></div>
+</section>
+<div class="footer">LUISA ODONTO · DENTAL MANAGEMENT · UM NOVO CAPÍTULO DA SUA HISTÓRIA</div>
+</main></div>
+
+<div class="modal" id="modal"><div class="modalbox"><div class="modalhead"><h3 id="modalTitle">Novo registro</h3><button class="x" onclick="closeModal()">✕</button></div><form id="modalForm" class="formgrid"></form></div></div>
+<script>
+const $=id=>document.getElementById(id);
+const load=k=>JSON.parse(localStorage.getItem('luisa_'+k)||'[]');
+const save=(k,v)=>{localStorage.setItem('luisa_'+k,JSON.stringify(v));refresh()};
+let patients=load('patients'),appointments=load('appointments'),treatments=load('treatments'),finance=load('finance'),stock=load('stock');
+const money=v=>(Number(v)||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function persist(k,v){localStorage.setItem('luisa_'+k,JSON.stringify(v));({patients,appointments,treatments,finance,stock}[k]=v);refresh()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function field(label,name,type='text',required=true,opts=''){return `<div class="field"><label>${label}</label>${type==='select'?`<select name="${name}" ${required?'required':''}>${opts}</select>`:`<input name="${name}" type="${type}" ${required?'required':''}>`}</div>`}
+function openModal(title,fields,onSave){$('modalTitle').textContent=title;$('modalForm').innerHTML=fields+`<div class="field full actions" style="justify-content:flex-end;margin-top:8px"><button type="button" class="btn line" onclick="closeModal()">Cancelar</button><button class="btn">Salvar registro</button></div>`;$('modal').classList.add('show');$('modalForm').onsubmit=e=>{e.preventDefault();const data=Object.fromEntries(new FormData(e.target));onSave(data);closeModal()}}
+function closeModal(){$('modal').classList.remove('show')}
+function openPatient(){openModal('Cadastrar paciente',field('Nome completo','name')+field('Telefone / WhatsApp','phone','tel')+field('E-mail','email','email',false)+field('Origem do contato','source','select',true,'<option>Instagram</option><option>Indicação</option><option>Google</option><option>Outro</option>')+field('Etapa do relacionamento','status','select',true,'<option>Novo contato</option><option>Avaliação agendada</option><option>Plano apresentado</option><option>Em tratamento</option><option>Concluído</option>'),d=>persist('patients',[...patients,{...d,id:Date.now()}]))}
+function openAppointment(){openModal('Agendar consulta',field('Paciente','patient','select',true,patients.map(p=>`<option>${esc(p.name)}</option>`).join('')||'<option value="">Cadastre um paciente primeiro</option>')+field('Procedimento','procedure')+field('Data','date')+field('Horário','time')+field('Status','status','select',true,'<option>Confirmado</option><option>Aguardando confirmação</option><option>Concluído</option><option>Cancelado</option>'),d=>persist('appointments',[...appointments,{...d,id:Date.now()}]))}
+function openTreatment(){openModal('Novo plano de tratamento',field('Paciente','patient','select',true,patients.map(p=>`<option>${esc(p.name)}</option>`).join('')||'<option>Cadastre um paciente primeiro</option>')+field('Procedimento / plano','name')+field('Valor estimado (R$)','value','number')+field('Status','status','select',true,'<option>Aguardando aprovação</option><option>Aprovado</option><option>Em andamento</option><option>Concluído</option>'),d=>persist('treatments',[...treatments,{...d,id:Date.now()}]))}
+function openFinance(){openModal('Lançamento financeiro',field('Descrição','description')+field('Tipo','type','select',true,'<option>Receita</option><option>Despesa</option>')+field('Valor (R$)','value','number')+field('Data','date'),d=>persist('finance',[...finance,{...d,id:Date.now()}]))}
+function openStock(){openModal('Adicionar material',field('Nome do material','name')+field('Categoria','category')+field('Quantidade','qty','number')+field('Estoque mínimo','min','number'),d=>persist('stock',[...stock,{...d,id:Date.now()}]))}
+function removeItem(key,id){if(!confirm('Deseja excluir este registro?'))return;persist(key,load(key).filter(x=>x.id!==id))}
+function renderPatients(){let q=($('patientSearch')?.value||'').toLowerCase(),arr=patients.filter(p=>(p.name+p.phone+p.email).toLowerCase().includes(q));$('patientCount').textContent=arr.length+' paciente(s)';$('patientRows').innerHTML=arr.map(p=>`<tr><td><b>${esc(p.name)}</b></td><td>${esc(p.phone)}<br><span class="muted">${esc(p.email)}</span></td><td>${esc(p.source)}</td><td><span class="pill">${esc(p.status)}</span></td><td><button class="btn danger" onclick="removeItem('patients',${p.id})">Excluir</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">Nenhum paciente cadastrado. Comece adicionando seu primeiro contato.</td></tr>'}
+function renderAgenda(){let date=$('agendaDate').value||new Date().toISOString().slice(0,10);$('agendaDate').value=date;let arr=appointments.filter(a=>a.date===date).sort((a,b)=>a.time.localeCompare(b.time));$('agendaList').innerHTML=arr.map(a=>`<div class="appointment"><div class="time">${esc(a.time)}</div><div style="flex:1"><b>${esc(a.patient)}</b><div class="muted" style="margin-top:4px">${esc(a.procedure)}</div></div><span class="pill">${esc(a.status)}</span><button class="btn danger" onclick="removeItem('appointments',${a.id})">×</button></div>`).join('')||'<div class="empty">Nenhum atendimento nesta data.</div>'}
+function renderTreatments(){$('treatmentRows').innerHTML=treatments.map(t=>`<tr><td>${esc(t.patient)}</td><td>${esc(t.name)}</td><td>${money(t.value)}</td><td><span class="pill gold">${esc(t.status)}</span></td><td><button class="btn danger" onclick="removeItem('treatments',${t.id})">Excluir</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">Nenhum plano registrado.</td></tr>'}
+function renderFinance(){let rev=finance.filter(x=>x.type==='Receita').reduce((s,x)=>s+Number(x.value),0),exp=finance.filter(x=>x.type==='Despesa').reduce((s,x)=>s+Number(x.value),0);$('totalRevenue').textContent=money(rev);$('totalExpenses').textContent=money(exp);$('balance').textContent=money(rev-exp);$('financeRows').innerHTML=finance.map(x=>`<tr><td>${esc(x.description)}</td><td><span class="pill ${x.type==='Despesa'?'gray':''}">${esc(x.type)}</span></td><td>${esc(x.date)}</td><td>${money(x.value)}</td><td><button class="btn danger" onclick="removeItem('finance',${x.id})">Excluir</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">Nenhum lançamento financeiro.</td></tr>'}
+function renderStock(){$('stockRows').innerHTML=stock.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.category)}</td><td>${esc(x.qty)}</td><td>${esc(x.min)}</td><td><button class="btn danger" onclick="removeItem('stock',${x.id})">Excluir</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">Nenhum material cadastrado.</td></tr>'}
+function refresh(){$('statPatients').textContent=patients.length;$('statAppointments').textContent=appointments.length;$('statTreatments').textContent=treatments.length;$('statRevenue').textContent=money(finance.filter(x=>x.type==='Receita').reduce((s,x)=>s+Number(x.value),0));$('upcoming').innerHTML=appointments.slice().sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)).slice(0,4).map(a=>`<div class="appointment"><div class="time">${esc(a.date.split('-').reverse().join('/'))}<br>${esc(a.time)}</div><div><b>${esc(a.patient)}</b><div class="muted">${esc(a.procedure)}</div></div></div>`).join('')||'<div class="empty">Seus próximos atendimentos aparecerão aqui.</div>';renderPatients();renderAgenda();renderTreatments();renderFinance();renderStock()}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.page).classList.add('active');$('pageTitle').textContent=b.textContent.trim()});
+refresh();
+</script></body></html>
